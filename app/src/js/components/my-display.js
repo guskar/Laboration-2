@@ -1,29 +1,30 @@
 
 /**
- * The my-button web component module.
+ * The my-display web component module.
  *
  * @author Gustav Karlberg <gk222iv@student.lnu.se>
  */
 
 const template = document.createElement('template')
 template.innerHTML = `
- <button id='btn'></button>
- 
- <style>
-   button{
-     width: 50px;
-     height: 50px;
-     font-size: 12px;
-     padding: 0;
-     margin: 0;
-   }
- </style>
- 
- `
+  
+  <style>
+    div{
+      width: 600px;
+      height: 100px;
+      font-size: 20px;
+      border: 1px solid black;
+      padding: 0;
+      margin: 0;
+    }
+    </style>
+  
+  <div></div>
+  `
 
-customElements.define('my-button',
+customElements.define('my-display',
   /**
-   * Represents a my-button element.
+   * Represents a my-dispaly element.
    */
   class extends HTMLElement {
     /**
@@ -34,7 +35,7 @@ customElements.define('my-button',
 
       this.attachShadow({ mode: 'open' })
       this.shadowRoot.appendChild(template.content.cloneNode(true))
-      this.button = this.shadowRoot.querySelector('#btn')
+      this.div = this.shadowRoot.querySelector('div')
     }
 
     /**
@@ -55,7 +56,7 @@ customElements.define('my-button',
      */
     attributeChangedCallback (name, oldValue, newValue) {
       if (name === 'text') {
-        this.button.innerText = newValue
+        this.div.innerText = newValue
       }
     }
 
