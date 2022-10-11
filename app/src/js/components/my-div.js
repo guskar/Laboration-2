@@ -1,6 +1,7 @@
 
 import '../components/my-button.js'
 import '../components/my-display.js'
+import { ChordProvider } from '../../../module/chordProvider.js'
 /**
  * The my-div web component module.
  *
@@ -30,7 +31,7 @@ template.innerHTML = `
   <h1></h1>
 
   <div id='btnDiv'>
-    <my-button id='Abtn' text='A'></my-button>
+    <my-button text='A'></my-button>
     <my-button text='Bb'></my-button>
     <my-button text='B'></my-button>
     <my-button text='C'></my-button>
@@ -64,13 +65,17 @@ customElements.define('my-div',
 
       this.attachShadow({ mode: 'open' })
       this.shadowRoot.appendChild(template.content.cloneNode(true))
-
+      this.chordProvider = new ChordProvider()
       this.text = this.shadowRoot.querySelector('h1')
       this.display = this.shadowRoot.querySelector('#display')
-      this.button = this.shadowRoot.querySelector('#Abtn')
-      this.button.addEventListener('click', (event) => {
-        this.display.setAttribute('text', this.button.getAttribute('text'))
-        event.preventDefault()
+      this.buttons = this.shadowRoot.querySelectorAll('my-button')
+
+      this.buttons.forEach((button) => {
+        button.addEventListener('click', async (event) => {
+          const chordString = await this.chordProvider.getChordAsString(button.getAttribute('text'))
+          this.display.setAttribute('text', chordString)
+          event.preventDefault()
+        })
       })
     }
 

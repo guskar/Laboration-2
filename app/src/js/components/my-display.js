@@ -1,3 +1,4 @@
+import { ChordProvider } from '../../../module/chordProvider.js'
 
 /**
  * The my-display web component module.
@@ -11,8 +12,9 @@ template.innerHTML = `
   <style>
     div{
       width: 600px;
-      height: 100px;
+      height: 300px;
       font-size: 20px;
+      text-align: left;
       border: 1px solid black;
       padding: 0;
       margin: 0;
@@ -36,6 +38,7 @@ customElements.define('my-display',
       this.attachShadow({ mode: 'open' })
       this.shadowRoot.appendChild(template.content.cloneNode(true))
       this.div = this.shadowRoot.querySelector('div')
+      this.chordProvider = new ChordProvider()
     }
 
     /**
@@ -63,7 +66,8 @@ customElements.define('my-display',
     /**
      * Called when the element is added to the DOM.
      */
-    connectedCallback () {
-
+    async connectedCallback () {
+      // const chordString = await this.chordProvider.getChordAsString('A')
+      // this.div.innerText = chordString
     }
   })

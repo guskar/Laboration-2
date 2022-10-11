@@ -17,6 +17,8 @@
   "devDependencies": {
     "@lnu/eslint-config": "^1.1.4",
     "vite": "^2.6.7"
+  },
+  "dependencies": {
+    "node-fetch": "^3.2.10"
   }
-  
 }
