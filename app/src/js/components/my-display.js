@@ -11,17 +11,33 @@ template.innerHTML = `
   
   <style>
     div{
-      width: 600px;
+      width: 700px;
       height: 300px;
       font-size: 20px;
       text-align: left;
-      border: 1px solid black;
+      /* border: 1px solid black; */
       padding: 0;
       margin: 0;
     }
     </style>
   
-  <div></div>
+  <div id='btnDiv'>
+    <my-button text='A'></my-button>
+    <my-button text='Bb'></my-button>
+    <my-button text='B'></my-button>
+    <my-button text='C'></my-button>
+    <my-button text='Db'></my-button>
+    <my-button text='D'></my-button>
+    <my-button text='Eb'></my-button>
+    <my-button text='E'></my-button>
+    <my-button text='F'></my-button>
+    <my-button text='Gb'></my-button>
+    <my-button text='G'></my-button>
+    <my-button text='Ab'></my-button>
+    <div id='displayDiv'></div>
+  </div>
+
+  
   `
 
 customElements.define('my-display',
@@ -37,8 +53,9 @@ customElements.define('my-display',
 
       this.attachShadow({ mode: 'open' })
       this.shadowRoot.appendChild(template.content.cloneNode(true))
-      this.div = this.shadowRoot.querySelector('div')
+      this.div = this.shadowRoot.querySelector('#displayDiv')
       this.chordProvider = new ChordProvider()
+      this.buttons = this.shadowRoot.querySelectorAll('my-button')
     }
 
     /**
@@ -47,7 +64,7 @@ customElements.define('my-display',
      * @returns {string[]} A string array of attributes to monitor.
      */
     static get observedAttributes () {
-      return ['text']
+      return ['text', 'show']
     }
 
     /**
@@ -60,6 +77,27 @@ customElements.define('my-display',
     attributeChangedCallback (name, oldValue, newValue) {
       if (name === 'text') {
         this.div.innerText = newValue
+      }
+      if (name === 'show' && newValue === 'chord') {
+        console.log('hej från string')
+        this.buttons.forEach((button) => {
+          button.addEventListener('click', async (event) => {
+            const chordString = await this.chordProvider.getChordAsString(button.getAttribute('text'))
+            this.setAttribute('text', chordString)
+            event.preventDefault()
+          })
+        })
+      }
+
+      if (name === 'show' && newValue === 'chords in key') {
+        console.log('hej från object')
+        this.buttons.forEach((button) => {
+          button.addEventListener('click', async (event) => {
+            const chords = await this.chordProvider.getRandomSongStructure(button.getAttribute('text'))
+            this.setAttribute('text', `Verse:\n ${chords.verse}\nRefrain:\n ${chords.chorus}\nBridge:\n ${chords.bridge}`)
+            event.preventDefault()
+          })
+        })
       }
     }
 

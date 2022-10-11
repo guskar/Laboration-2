@@ -29,8 +29,11 @@ template.innerHTML = `
 
 <div id='theDiv'>
   <h1></h1>
-
   <div id='btnDiv'>
+    <my-button id='chordBtn'text='chord'></my-button>
+    <my-button id='chordsInKeyBtn' text='chords in key'></my-button>
+  </div>
+  <!-- <div id='btnDiv'>
     <my-button text='A'></my-button>
     <my-button text='Bb'></my-button>
     <my-button text='B'></my-button>
@@ -43,11 +46,11 @@ template.innerHTML = `
     <my-button text='Gb'></my-button>
     <my-button text='G'></my-button>
     <my-button text='Ab'></my-button>
-  </div>
+  </div> -->
 
-  <div>
-    <my-display id='display'></my-display>
-  </div>
+  
+    <my-display id='displayEasyChord'></my-display>
+  
 
 </div>
 `
@@ -67,17 +70,28 @@ customElements.define('my-div',
       this.shadowRoot.appendChild(template.content.cloneNode(true))
       this.chordProvider = new ChordProvider()
       this.text = this.shadowRoot.querySelector('h1')
-      this.display = this.shadowRoot.querySelector('#display')
-      this.buttons = this.shadowRoot.querySelectorAll('my-button')
+      this.display = this.shadowRoot.querySelector('#displayEasyChord')
+      this.chordButton = this.shadowRoot.querySelector('#chordBtn')
+      this.chordsInKeyBtn = this.shadowRoot.querySelector('#chordsInKeyBtn')
 
-      this.buttons.forEach((button) => {
-        button.addEventListener('click', async (event) => {
-          const chordString = await this.chordProvider.getChordAsString(button.getAttribute('text'))
-          this.display.setAttribute('text', chordString)
-          event.preventDefault()
-        })
+      this.chordButton.addEventListener('click', () => {
+        this.display.setAttribute('show', this.chordButton.getAttribute('text'))
+      })
+
+      this.chordsInKeyBtn.addEventListener('click', () => {
+        this.display.setAttribute('show', this.chordsInKeyBtn.getAttribute('text'))
       })
     }
+      // this.buttons = this.shadowRoot.querySelectorAll('my-button')
+
+    //   this.buttons.forEach((button) => {
+    //     button.addEventListener('click', async (event) => {
+    //       const chordString = await this.chordProvider.getChordAsString(button.getAttribute('text'))
+    //       this.display.setAttribute('text', chordString)
+    //       event.preventDefault()
+    //     })
+    //   })
+    // }
 
     /**
      * Watches the attribute "headline" for changes on the element.
@@ -105,6 +119,6 @@ customElements.define('my-div',
      * Called when the element is added to the DOM.
      */
     connectedCallback () {
-      this.text.innerText = 'ChordProvider'
+      // this.text.innerText = 'ChordProvider'
     }
   })

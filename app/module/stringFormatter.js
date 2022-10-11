@@ -34,4 +34,12 @@ export class StringFormatter {
     }
     return chordString
   }
+
+  createStringFromSongStructureObject (data) {
+    let randomSongString = ''
+    for (const key of data) {
+      randomSongString += `${key}`
+    }
+    return randomSongString
+  }
 }
