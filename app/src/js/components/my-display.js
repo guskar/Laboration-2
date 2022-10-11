@@ -59,12 +59,12 @@ customElements.define('my-display',
     }
 
     /**
-     * Watches the attribute "text" for changes on the element.
+     * Watches the attribute "show" for changes on the element.
      *
      * @returns {string[]} A string array of attributes to monitor.
      */
     static get observedAttributes () {
-      return ['text', 'show']
+      return ['show']
     }
 
     /**
@@ -75,28 +75,19 @@ customElements.define('my-display',
      * @param {any} newValue the new attribute value.
      */
     attributeChangedCallback (name, oldValue, newValue) {
-      if (name === 'text') {
-        this.div.innerText = newValue
-      }
       if (name === 'show' && newValue === 'chord') {
-        console.log('hej från string')
+        console.log(name, newValue)
         this.buttons.forEach((button) => {
-          button.addEventListener('click', async (event) => {
-            const chordString = await this.chordProvider.getChordAsString(button.getAttribute('text'))
-            this.setAttribute('text', chordString)
-            event.preventDefault()
-          })
+          button.removeEventListener('click', this.showSongStructure)
+          button.addEventListener('click', this.showEasyChord)
         })
       }
 
       if (name === 'show' && newValue === 'chords in key') {
-        console.log('hej från object')
+        console.log(name, newValue)
         this.buttons.forEach((button) => {
-          button.addEventListener('click', async (event) => {
-            const chords = await this.chordProvider.getRandomSongStructure(button.getAttribute('text'))
-            this.setAttribute('text', `Verse:\n ${chords.verse}\nRefrain:\n ${chords.chorus}\nBridge:\n ${chords.bridge}`)
-            event.preventDefault()
-          })
+          button.removeEventListener('click', this.showEasyChord)
+          button.addEventListener('click', this.showSongStructure)
         })
       }
     }
@@ -107,5 +98,15 @@ customElements.define('my-display',
     async connectedCallback () {
       // const chordString = await this.chordProvider.getChordAsString('A')
       // this.div.innerText = chordString
+    }
+
+    showEasyChord = async (event) => {
+      const chordString = await this.chordProvider.getChordAsString(event.target.getAttribute('text'))
+      this.div.innerText = chordString
+    }
+
+    showSongStructure = async (event) => {
+      const chords = await this.chordProvider.getRandomSongStructure(event.target.getAttribute('text'))
+      this.div.innerText = `Verse:\n ${chords.verse}\nRefrain:\n ${chords.chorus}\nBridge:\n ${chords.bridge}`
     }
   })
