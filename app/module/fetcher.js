@@ -10,11 +10,12 @@ export class Fetcher {
    * @returns {object} The data to return.
    */
   async fetchData (url) {
-    const response = await fetch(url)
-    const data = await response.json()
-    if (response.status !== 200) {
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+      return data
+    } catch (error) {
       throw new Error('Something went wrong trying to fetch the API')
     }
-    return data
   }
 }

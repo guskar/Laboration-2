@@ -4,5 +4,5 @@ Denna application är tänkt att bli en web-app som erbjuder en slutanvändare a
 # Krav
 - En slutanvändare ska kunna välja ett av två alternativ. Antingen att få ett ackord enekelt presenterat som en text alternativt få en sångstruktur baserad på valt ackord.
 - En slutanvändare ska kunna välja ett ackord utav de tolv dur-ackord som existerar. Detta ska göras via knappar.
-
+- Om vi inte kan göra fetchen till api så ska ett meddelande om detta visas för användaren användaren.
 

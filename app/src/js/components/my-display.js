@@ -10,14 +10,18 @@ const template = document.createElement('template')
 template.innerHTML = `
   
   <style>
+
     div{
-      width: 700px;
+      width: 500px;
       height: 300px;
       font-size: 20px;
-      text-align: left;
-      /* border: 1px solid black; */
-      padding: 0;
+      text-align: center;
+      padding: 1rem;
       margin: 0;
+    }
+
+    #displayDiv{
+      padding-top: 1rem;
     }
     </style>
   
@@ -75,7 +79,7 @@ customElements.define('my-display',
      * @param {any} newValue the new attribute value.
      */
     attributeChangedCallback (name, oldValue, newValue) {
-      if (name === 'show' && newValue === 'chord') {
+      if (name === 'show' && newValue === 'Easy Chord') {
         console.log(name, newValue)
         this.buttons.forEach((button) => {
           button.removeEventListener('click', this.showSongStructure)
@@ -83,7 +87,7 @@ customElements.define('my-display',
         })
       }
 
-      if (name === 'show' && newValue === 'chords in key') {
+      if (name === 'show' && newValue === 'Make a song') {
         console.log(name, newValue)
         this.buttons.forEach((button) => {
           button.removeEventListener('click', this.showEasyChord)
@@ -93,21 +97,18 @@ customElements.define('my-display',
     }
 
     /**
-     * Called when the element is added to the DOM.
-     */
-    async connectedCallback () {
-      // const chordString = await this.chordProvider.getChordAsString('A')
-      // this.div.innerText = chordString
-    }
-
-    /**
      * Responsible for handling the showEasyChord event.
      *
      * @param {object} event - Represents the event object.
      */
     showEasyChord = async (event) => {
-      const chordString = await this.chordProvider.getChordAsString(event.target.getAttribute('text'))
-      this.div.innerText = chordString
+      try {
+        const chordString = await this.chordProvider.getChordAsString(event.target.getAttribute('text'))
+        this.div.innerText = chordString
+      } catch (error) {
+        console.log(error.message)
+        this.dispatchEvent(new CustomEvent('errorflash', { bubbles: true, composed: true }))
+      }
     }
 
     /**
@@ -116,7 +117,22 @@ customElements.define('my-display',
      * @param {object} event - Representing the event object.
      */
     showSongStructure = async (event) => {
-      const chordsInSongStructure = await this.chordProvider.getRandomSongStructure(event.target.getAttribute('text'))
-      this.div.innerText = `Verse:\n ${chordsInSongStructure.verse}\nRefrain:\n ${chordsInSongStructure.chorus}\nBridge:\n ${chordsInSongStructure.bridge}`
+      try {
+        const chordsInSongStructure = await this.chordProvider.getRandomSongStructure(event.target.getAttribute('text'))
+        this.div.innerText = this.crateEasySongString(chordsInSongStructure)
+      } catch (error) {
+        this.dispatchEvent(new CustomEvent('errorflash', { bubbles: true, composed: true }))
+      }
+    }
+
+    /**
+     * Responsible for formating the string.
+     *
+     * @param {object} chordsInSongStructure - Represents the object to make string from.
+     * @returns {string} - Returns the formatted string.
+     */
+    crateEasySongString (chordsInSongStructure) {
+      const easySongString = `Verse:\n ${chordsInSongStructure.verse}\nChorus:\n ${chordsInSongStructure.chorus}\nBridge:\n ${chordsInSongStructure.bridge}`
+      return easySongString
     }
   })

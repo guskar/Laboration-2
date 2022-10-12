@@ -11,12 +11,19 @@ template.innerHTML = `
  
  <style>
    button{
-     width: 70px;
-     height: 70px;
+     border-radius: 90px;
+     border: none;
+     width: 60px;
+     height: 60px;
      font-size: 12px;
      padding: 0;
-     margin: 0;
+     margin: 2px;
    }
+
+   button:hover{
+     background-color: lightgrey;
+   }
+
  </style>
  
  `
@@ -57,12 +64,5 @@ customElements.define('my-button',
       if (name === 'text') {
         this.button.innerText = newValue
       }
-    }
-
-    /**
-     * Called when the element is added to the DOM.
-     */
-    connectedCallback () {
-
     }
   })

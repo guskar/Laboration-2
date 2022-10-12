@@ -13,13 +13,14 @@ template.innerHTML = `
 
 <style>
   #theDiv{
-   
+    background-image: url('https://indiebandguru.com/wp-content/uploads/2022/05/guitar.webp');
     font-size: 35px;
+    color: white;
     text-align: center;
     display: grid;
+    height: 100%;
     justify-content: center;
     margin: 0;
-    /* border: 1px solid black; */
   }
 
   #btnDiv{
@@ -38,10 +39,11 @@ template.innerHTML = `
 <div id='theDiv'>
 
   <h1></h1>
+  <h4 id='flash'></h4>
 
   <div id='btnDiv'>
-    <my-button id='chordBtn'text='chord'></my-button>
-    <my-button id='chordsInKeyBtn' text='chords in key'></my-button>
+    <my-button id='chordBtn'text='Easy Chord'></my-button>
+    <my-button id='chordsInKeyBtn' text='Make a song'></my-button>
   </div>
   
   <my-display id='display'></my-display>
@@ -68,13 +70,22 @@ customElements.define('my-chordproviderwindow',
       this.display = this.shadowRoot.querySelector('#display')
       this.chordButton = this.shadowRoot.querySelector('#chordBtn')
       this.chordsInKeyBtn = this.shadowRoot.querySelector('#chordsInKeyBtn')
+      this.flash = this.shadowRoot.querySelector('#flash')
 
       this.chordButton.addEventListener('click', () => {
+        this.flash.innerText = 'Go ahead and pick a chord'
         this.display.setAttribute('show', this.chordButton.getAttribute('text'))
       })
 
       this.chordsInKeyBtn.addEventListener('click', () => {
+        this.flash.innerText = 'Go ahead and pick a chord for a song'
         this.display.setAttribute('show', this.chordsInKeyBtn.getAttribute('text'))
+      })
+
+      this.addEventListener('errorflash', (e) => {
+        console.log('hejsan')
+        this.flash.innerText = 'Something went wrong trying to fetch api'
+        this.flash.style.color = 'red'
       })
     }
 
@@ -98,12 +109,5 @@ customElements.define('my-chordproviderwindow',
       if (name === 'headline') {
         this.text.innerText = newValue
       }
-    }
-
-    /**
-     * Called when the element is added to the DOM.
-     */
-    connectedCallback () {
-      // this.text.innerText = 'ChordProvider'
     }
   })
