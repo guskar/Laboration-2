@@ -1,9 +1,9 @@
 
-import '../components/my-button.js'
-import '../components/my-display.js'
+import './my-button.js'
+import './my-display.js'
 import { ChordProvider } from '../../../module/chordProvider.js'
 /**
- * The my-div web component module.
+ * The my-chordProviderWindow web component module.
  *
  * @author Gustav Karlberg <gk222iv@student.lnu.se>
  */
@@ -50,7 +50,7 @@ template.innerHTML = `
 </div>
 `
 
-customElements.define('my-div',
+customElements.define('my-chordproviderwindow',
   /**
    * Represents a my-div element.
    */

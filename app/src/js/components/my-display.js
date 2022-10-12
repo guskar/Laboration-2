@@ -100,13 +100,23 @@ customElements.define('my-display',
       // this.div.innerText = chordString
     }
 
+    /**
+     * Responsible for handling the showEasyChord event.
+     *
+     * @param {object} event - Represents the event object.
+     */
     showEasyChord = async (event) => {
       const chordString = await this.chordProvider.getChordAsString(event.target.getAttribute('text'))
       this.div.innerText = chordString
     }
 
+    /**
+     * Responsible for handling the showSongStructure event.
+     *
+     * @param {object} event - Representing the event object.
+     */
     showSongStructure = async (event) => {
-      const chords = await this.chordProvider.getRandomSongStructure(event.target.getAttribute('text'))
-      this.div.innerText = `Verse:\n ${chords.verse}\nRefrain:\n ${chords.chorus}\nBridge:\n ${chords.bridge}`
+      const chordsInSongStructure = await this.chordProvider.getRandomSongStructure(event.target.getAttribute('text'))
+      this.div.innerText = `Verse:\n ${chordsInSongStructure.verse}\nRefrain:\n ${chordsInSongStructure.chorus}\nBridge:\n ${chordsInSongStructure.bridge}`
     }
   })
