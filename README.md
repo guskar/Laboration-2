@@ -1,5 +1,8 @@
 # **Chord Provider**
-This application serves the possibility to get guitarchords presented in an easy way and the possibility to get a random song based on a specific chord. 
+This application serves the possibility to get guitarchords presented in an easy way and the possibility to get a random song based on a specific chord.
+
+
+It is primarily aimed at beginners in playing the guitar.
 
 It uses the https://api.uberchord.com/ API. Please check documentation for further info
 
@@ -18,10 +21,10 @@ It uses the https://api.uberchord.com/ API. Please check documentation for furth
 
 ## **Installation**
 ---
-Pleaso follow this link and clone repo [Link to Repo](https://github.com/guskar/Laboration-2)
+Pleaso follow this link and clone repo [Link to Repo](https://github.com/guskar/Laboration-2.git)
 
  ```
- git clone https://github.com/guskar/Laboration-2
+ git clone https://github.com/guskar/Laboration-2.git
  ```
 
 Then type following in terminal

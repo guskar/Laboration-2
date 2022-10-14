@@ -83,7 +83,6 @@ customElements.define('my-chordproviderwindow',
       })
 
       this.addEventListener('errorflash', (e) => {
-        console.log('hejsan')
         this.flash.innerText = 'Something went wrong trying to fetch api'
         this.flash.style.color = 'red'
       })
