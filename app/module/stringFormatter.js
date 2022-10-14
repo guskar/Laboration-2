@@ -3,7 +3,7 @@
  * The StringFormatter class.
  */
 export class StringFormatter {
-  FINGERS_ENUM = Object.freeze({
+  #FINGERS_ENUM = Object.freeze({
     1: 'pointerfinger',
     2: 'middlefinger',
     3: 'ringfinger',
@@ -29,7 +29,7 @@ export class StringFormatter {
       } else if (guitarStrings[i] === '0') {
         chordString += `String nr: ${i + 1} is played open\n`
       } else {
-        chordString += `Place your ${this.FINGERS_ENUM[fingers[i]]} on string nr: ${i + 1} on fret nr: ${guitarStrings[i]}\n`
+        chordString += `Place your ${this.#FINGERS_ENUM[fingers[i]]} on string nr: ${i + 1} on fret nr: ${guitarStrings[i]}\n`
       }
     }
     return chordString

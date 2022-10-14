@@ -7,6 +7,7 @@
 
 const template = document.createElement('template')
 template.innerHTML = `
+
  <button id='btn'></button>
  
  <style>

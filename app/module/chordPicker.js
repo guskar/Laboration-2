@@ -3,13 +3,13 @@
  * The ChordPicker class of the application.
  */
 export class ChordPicker {
-  CHORD_SCALE
+  #CHORD_SCALE
 
   /**
    * The constructor of the ChordPicker class.
    */
   constructor () {
-    this.CHORD_SCALE = Object.freeze(['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G'])
+    this.#CHORD_SCALE = Object.freeze(['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G'])
   }
 
   /**
@@ -20,16 +20,16 @@ export class ChordPicker {
    */
   createChordsThatFitsInKeyArr (keyChord) {
     const chordsThatFitsInKey = []
-    const indexForKeyChord = this.CHORD_SCALE.indexOf(keyChord)
+    const indexForKeyChord = this.#CHORD_SCALE.indexOf(keyChord)
 
     // incrementor added to control what elements we want to pick in the CHORD_SCALE array.
     let incrementor = indexForKeyChord
     for (let i = 0; i < 4; i++) {
-      chordsThatFitsInKey.push(this.CHORD_SCALE[incrementor])
+      chordsThatFitsInKey.push(this.#CHORD_SCALE[incrementor])
       if (incrementor === indexForKeyChord) {
-        incrementor = (incrementor + 5) % this.CHORD_SCALE.length
+        incrementor = (incrementor + 5) % this.#CHORD_SCALE.length
       } else {
-        incrementor = (incrementor + 2) % this.CHORD_SCALE.length
+        incrementor = (incrementor + 2) % this.#CHORD_SCALE.length
       }
     }
     // Makes the element at that position a minor chord since it has to fit in the key chosen by the user.
@@ -48,7 +48,7 @@ export class ChordPicker {
     const transposedChordsArr = []
 
     chordArr.forEach(element => {
-      const transposeIndex = this.CHORD_SCALE.indexOf(element) + stepsToTranspose
+      const transposeIndex = this.#CHORD_SCALE.indexOf(element) + stepsToTranspose
       // meddedIndex added to controll that index cant go out of range
       const moddedIndex = transposeIndex % this.CHORD_SCALE.length
       transposedChordsArr.push(this.CHORD_SCALE[moddedIndex])
