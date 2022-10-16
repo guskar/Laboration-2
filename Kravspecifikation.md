@@ -4,7 +4,7 @@ Denna application är tänkt att bli en web-app som erbjuder en slutanvändare a
 # Icke Funktionella krav
 - Applikationen ska vara skriven i javascript.
 - Applikationen ska kännas robust och användarvänlig.
-- Applikationen ska följa lnu´s linting kordstandard.
+- Applikationen ska följa lnu´s linting kodstandard.
 
 # Funktionella Krav
 - En slutanvändare ska kunna välja ett av två alternativ. Antingen att få ett ackord enekelt presenterat som en text alternativt få en sångstruktur baserad på valt ackord.

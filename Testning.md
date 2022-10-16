@@ -1,9 +1,8 @@
 # Testning
 För att testa applikationen så har jag använt mig av manuella enhetstester i form av Use cases.
 
-## Testrapport
 
-### Testrapport
+# Testrapport
 
 | User cases| Testmetod | Status|       
 | --------- |:---------:|:-----:|
@@ -14,14 +13,14 @@ För att testa applikationen så har jag använt mig av manuella enhetstester i 
 | UC 4      | Manuellt test   |✅ |
 | UC 5      | Manuellt test   |✅ |
 
-
+---
 
 ## Förberedelser
 * Installera applikationen enligt instruktionerna i README.md
 
 ---
 
-## Testfall
+# Testfall
 
 ## UC1 Navigera till startsidan 
 
@@ -68,7 +67,7 @@ För att testa applikationen så har jag använt mig av manuella enhetstester i 
 
 **Beskrivning:** Kontrollerar att applikationen visar ett ackord presenterat som instruktioner i text.
 
-**Testinstruktion**
+**Instruktioner**
 1. Välj alternativet Easy Chord genom att trycka på knappen.
 2. Tryck på knappen A
 
@@ -82,7 +81,7 @@ För att testa applikationen så har jag använt mig av manuella enhetstester i 
 
 **Beskrivning:** Kontrollerar att applikationen visar en sångstruktur baserad på ackordet Bb.
 
-**Testinstruktion**
+**Instruktioner**
 1. Välj alternativet Make a song genom att trycka på knappen.
 2. Tryck på knappen Bb
 
@@ -98,7 +97,7 @@ Tester för att se att rätt ackord väljs ut finns i de automatiska testerna i 
 
 **Beskrivning:** Kontrollerar att applikationen visar ett flashmeddelande om något gick fel gällande uppkoppling eller fetch.
 
-**Testinstruktion**
+**Instruktioner**
 1. Stäng av Wi-Fi.
 2. Välj alternativet Make a song genom att trycka på knappen.
 3. Tryck på knappen A
