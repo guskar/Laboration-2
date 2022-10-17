@@ -1,10 +1,11 @@
 # **Chord Provider**
 This application serves the possibility to get guitarchords presented in an easy way and the possibility to get a random song based on a specific chord.
 
-
 It is primarily aimed at beginners in playing the guitar.
 
 It uses the https://api.uberchord.com/ API. Please check documentation for further info
+
+The application also uses a library that is intergrated in this repo in the module folder.
 
 ## Specific music terms:
 <ul>
@@ -41,6 +42,11 @@ npm install
     "vite": "^2.6.7"
   }
 ```
+## Technologies used in app
+- html
+- css
+- JavaScript
+- Vanilla.Js webcomponents
 
 ## **Usage**
 ---
