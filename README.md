@@ -21,7 +21,7 @@ It uses the https://api.uberchord.com/ API. Please check documentation for furth
 
 ## **Installation**
 ---
-Pleaso follow this link and clone repo [Link to Repo](https://github.com/guskar/Laboration-2.git)
+Please follow this link and clone repo [Link to Repo](https://github.com/guskar/Laboration-2.git)
 
  ```
  git clone https://github.com/guskar/Laboration-2.git
