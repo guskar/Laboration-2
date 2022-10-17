@@ -14,7 +14,7 @@ I bokens kapitel Functions har jag tagit fasta på tre koncept att försöka fok
 **Small** - Denna regel säger enligt boken att funktioner i det flesta fall tjänar på att hållas små(20-30 rader). Detta har verkligen varit en utmaning att följa men det börjar kännas mer naturligt att hitta vägen närmre det resultatet. För att funktionerna ska kunna hållas små så hjälper koncepten **Do one thing** och **One level of abstraction per funktion** att åstadkomma detta. Det blir då också tydligt att exempelvis dessa tre koncept känns väldigt hårt sammankopplade. Försöker man följa ett konceptet **small** så blir de andra två på något sätt lösningen på att uppnå detta. Min publika metod getTransposedChords() tycker jag är ett bra exemel på detta. Den är liten, gör egentligen bara en sak och håller sig till en hög abstarktionsnivå och det är tydligt va den gör. Det man skulle kunna disktutera är att errorhandling faktiskt är en sak. Så på sätt och vis gör den ju även det men har svårt att se hur jag skulle lösa det på annat sätt. I några fall på lägre abstraktionnivå har jag tyvärr inte kunnat följa detta fullt ut och bryter därmed mot **functions should not be large enough to hold nested structures** men jag får helt enkelt inse att en del saker tar längre tid att kunna applicera fullt ut.
 
 
- <img src="images/transposedchords.png" width="500" >  <img src="images/chordsthatfitsinkey.png" width="500" >
+ <img src="images/transposedchords.png" width="600" >  <img src="images/chordsthatfitsinkey.png" width="600" >
 
  
 
@@ -48,7 +48,7 @@ Större delen av min error hantering ligger i en egen klass vid namn ErrorHandle
 
 
 # Boundaries 
-I min applikation använder jag mig av ett api för att fetcha ackorden. **Exploring and learning boundaries** -  I Clean code diskuteras att det är bra att lära känna tredjepartskod genom learning tests. I mitt fall startade jag hela mitt projekt genom att läsa dokumentationen kring detta api samt utföra dessa tester direkt via postman. På detta sätt fick jag en tydlig bild av hur det fungerar, vilket kändes viktigt då hela modulens grund baseras på detta. Min egen modul som i sin tur skulle kunna bli tredjepartskod för en annan utvecklare testas även på liknande sätt i dess exempelapp.
+I min applikation använder jag mig av ett api för att fetcha ackorden. **Exploring and learning boundaries** -  I Clean code diskuteras att det är bra att lära känna tredjepartskod genom learning tests. I mitt fall startade jag hela mitt projekt genom att läsa dokumentationen kring detta api samt utföra dessa tester direkt via postman. På detta sätt fick jag en tydlig bild av hur det fungerar, vilket kändes viktigt då hela modulens grund baseras på detta. Min egen modul som i sin tur skulle kunna bli tredjepartskod för en annan utvecklare testas även på liknande sätt i dess exempelapp, där jag visar exempel på resultat vid anrop av huvudmodulens publika metoder. På detta sätt exponerar jag också den viktigaste funktionaliteten för utvecklaren och kapslar in systemets inre komplexa delar. 
 
  <img src="images/postman.png" width="700" >
 

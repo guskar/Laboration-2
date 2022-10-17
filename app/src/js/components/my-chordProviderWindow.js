@@ -54,7 +54,7 @@ template.innerHTML = `
 
 customElements.define('my-chordproviderwindow',
   /**
-   * Represents a my-div element.
+   * Represents a my-chordProviderWindow element.
    */
   class extends HTMLElement {
     /**
