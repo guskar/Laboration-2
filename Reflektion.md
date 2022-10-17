@@ -11,10 +11,11 @@ Genom hela skapandet av både min modul och denna app så har det här känts so
 
 # Functions 
 I bokens kapitel Functions har jag tagit fasta på tre koncept att försöka fokusera på som känns väldigt relaterade till varandra.
-**Small** - Denna regel säger enligt boken att funktioner i det flesta fall tjänar på att hållas små(20-30 rader). Detta har verkligen varit en utmaning att följa men det börjar kännas mer naturligt att hitta vägen närmre det resultatet. För att funktionerna ska kunna hållas små så hjälper koncepten **Do one thing** och **One level of abstraction per funktion** att åstadkomma detta. Det blir då också tydligt att exempelvis dessa tre koncept känns väldigt hårt sammankopplade. Försöker man följa ett konceptet **small** så blir de andra två på något sätt lösningen på att uppnå detta. Min publika metod getTransposedChords() tycker jag är ett bra exemel på detta. Den är liten, gör egentligen bara en sak och håller sig till en hög abstarktionsnivå och det är tydligt va den gör. Det man skulle kunna disktutera är att errorhandling faktiskt är en sak. Så på sätt och vis gör den ju även det men har svårt att se hur jag skulle lösa det på annat sätt.
+**Small** - Denna regel säger enligt boken att funktioner i det flesta fall tjänar på att hållas små(20-30 rader). Detta har verkligen varit en utmaning att följa men det börjar kännas mer naturligt att hitta vägen närmre det resultatet. För att funktionerna ska kunna hållas små så hjälper koncepten **Do one thing** och **One level of abstraction per funktion** att åstadkomma detta. Det blir då också tydligt att exempelvis dessa tre koncept känns väldigt hårt sammankopplade. Försöker man följa ett konceptet **small** så blir de andra två på något sätt lösningen på att uppnå detta. Min publika metod getTransposedChords() tycker jag är ett bra exemel på detta. Den är liten, gör egentligen bara en sak och håller sig till en hög abstarktionsnivå och det är tydligt va den gör. Det man skulle kunna disktutera är att errorhandling faktiskt är en sak. Så på sätt och vis gör den ju även det men har svårt att se hur jag skulle lösa det på annat sätt. I några fall på lägre abstraktionnivå har jag tyvärr inte kunnat följa detta fullt ut och bryter därmed mot **functions should not be large enough to hold nested structures** men jag får helt enkelt inse att en del saker tar längre tid att kunna applicera fullt ut.
 
 
- <img src="images/transposedchords.png" width="700" >
+ <img src="images/transposedchords.png" width="500" >  <img src="images/chordsthatfitsinkey.png" width="500" >
+
  
 
 # Comments 
@@ -39,11 +40,11 @@ I detta kapitel diskuterar författaren även en grundregel som kallas **The New
 
 
 # Error handling 
-Större delen av min error hantering ligger i en egen klass vid namn ErrorHandler där felen kastas uppåt och sedan får utvecklaren välja hur den vill hantera felen. Detta gör att övrig kod inte kladdas ner av felhanteringen i lika stor utsträckning. I Clean code kan vi läsa om att vi inte ska returnera null **Don´t return null** utan istället returnera exeptions. I kurserna där vi använt java som programmeringsspråk så har jag i stor utsträckning använt mig av att returnera null men inte alls på samma sätt i javascript. I gränssnittet har jag säkrat upp de flesta av felen som kan uppstå genom att jag bara erbjuder ett visst antal ackord som alternativ. Eftersom jag använder mig av ett api blir det dock viktigt att hantera ett fel som sker i kommunikationen med detta. Det gör jag med hjälp att ett custom event som skickar upp detta till föräldernoden som sen kan visa detta som ett flashmeddelande för slutanvändaren. I den komponent som använder min modul ligger sen de try catch som omsluter koden som berörs.
+Större delen av min error hantering ligger i en egen klass vid namn ErrorHandler där felen kastas uppåt och sedan får utvecklaren välja hur den vill hantera felen. Detta gör att övrig kod inte kladdas ner av felhanteringen i lika stor utsträckning. I Clean code kan vi läsa om att vi inte ska returnera null **Don´t return null** utan istället returnera exeptions. Därför använder jag mig bara av exeptions genomgående. I gränssnittet har jag säkrat upp de felen som kan uppstå genom att jag bara erbjuder ett visst antal ackord som alternativ. Eftersom jag använder mig av ett api blir det dock viktigt att hantera ett fel som sker i kommunikationen med detta. Det gör jag med hjälp att ett custom event som skickar upp detta till föräldernoden som sen kan visa felet som ett flashmeddelande för slutanvändaren utan att exponera error.message. I den komponent som använder min modul ligger sen de try catch som omsluter koden som berörs.
 
- <img src="images/errorhandler.png" width="700" >
----
+ <img src="images/errorhandler.png" width="500" > 
  <img src="images/display.png" width="700" >
+ 
 
 
 # Boundaries 

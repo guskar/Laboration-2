@@ -73,17 +73,19 @@ customElements.define('my-chordproviderwindow',
       this.flash = this.shadowRoot.querySelector('#flash')
 
       this.chordButton.addEventListener('click', () => {
+        this.flash.style.color = 'white'
         this.flash.innerText = 'Go ahead and pick a chord'
         this.display.setAttribute('show', this.chordButton.getAttribute('text'))
       })
 
       this.chordsInKeyBtn.addEventListener('click', () => {
+        this.flash.style.color = 'white'
         this.flash.innerText = 'Go ahead and pick a chord for a song'
         this.display.setAttribute('show', this.chordsInKeyBtn.getAttribute('text'))
       })
 
       this.addEventListener('errorflash', (e) => {
-        this.flash.innerText = 'Something went wrong trying to fetch api'
+        this.flash.innerText = 'Please check your Wi-Fi and try again'
         this.flash.style.color = 'red'
       })
     }
