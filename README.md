@@ -1,4 +1,4 @@
-# **Chord Provider**
+# Chord Provider
 This application serves the possibility to get guitarchords presented in an easy way and the possibility to get a random song based on a specific chord.
 
 It is primarily aimed at beginners in playing the guitar.
@@ -20,7 +20,7 @@ The application also uses a library that is intergrated in this repo in the modu
 </ul>
 
 
-## **Installation**
+## Installation
 ---
 Please follow this link and clone repo [Link to Repo](https://github.com/guskar/Laboration-2.git)
 
@@ -48,7 +48,7 @@ npm install
 - JavaScript
 - Vanilla.Js webcomponents
 
-## **Usage**
+## Usage
 ---
 Start the application by typing the following in terminal for setting up a local host.
 
@@ -71,5 +71,4 @@ There are several buttons representing the chords to choose from. After choosing
 
 Please feel free to open an issue on Github if you would like to make any major changes to the applications's source code. 
 
-## 1dv610-mjukvarukvalitet-L2
 
